@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+.carousel{
+  width: 100%;
+  max-height: 600px !important;
+  
+  position: relative;
+  overflow: hidden;
+}
+.carousel-item{
+  position: relative;
+  }
+.carousel-caption{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px;
+  color: #fff;
+  z-index: 10;
+  bottom: 350px;
+}
+.carousel-item img{
+  z-index: 2;
+}
