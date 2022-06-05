@@ -9,7 +9,9 @@ import { Horror } from '../pages/Horror';
 import { Thriller } from '../pages/Thriller';
 import { War } from '../pages/War';
 import { Login } from '../pages/Login';
+import { Register } from '../pages/Register';
 import navbar from '../styles/navbar.css';
+import SignUp from './SignUp';
 
 
 export const Navbar = () => {
@@ -58,6 +60,7 @@ export const Navbar = () => {
                 <Route path='/thriller' element={<Thriller />} />
                 <Route path='/war' element={<War />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/*' element={<Home />} />
 
