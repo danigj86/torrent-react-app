@@ -1,0 +1,40 @@
+:root {
+    --main-color: rgba(7, 214, 204, 0.745);
+  }
+
+.navbar-brand{
+    color: var(--main-color);
+    font-weight: 700;
+}
+/*ENLACES NAVBAR*/
+.nav-link{
+    color: var(--main-color);
+}
+/*BOTON LOGIN NAVBAR*/
+.login-btn{
+    text-decoration: none;
+    background-color: #383a3b;
+    color: var(--main-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 2rem;
+    transition: .3s;
+  }
+  .login-btn:hover{
+    text-decoration: none;
+    background-color: #383a3b;
+    color: #4dd0e1;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 2rem;
+  }

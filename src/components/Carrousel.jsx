@@ -12,22 +12,22 @@ export const Carrousel = () => {
                 <div className="carousel-item active" data-bs-interval="2000">
                     <img src="http://www.studioremarkable.com/wp-content/uploads/2012/08/Dark-Knight-Trilogy.jpg" className="d-block w-100" alt="..." />
                     <div className="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                        <h5>BESTS TORRENTS FREE</h5>
+                        <p>The best application to find the best torrents</p>
                     </div>
                 </div>
                 <div className="carousel-item" data-bs-interval="2000">
                     <img src="https://i0.wp.com/hipertextual.com/wp-content/uploads/2020/05/hipertextual-star-wars-celebra-may-the-4th-be-with-you-con-extraordinario-video-que-rinde-homenaje-toda-saga-2020581511.jpg?fit=1200%2C675&quality=50&strip=all&ssl=1" className="d-block w-100" alt="..." />
                     <div className="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+                        <h5>VARIOUS GENRES</h5>
+                        <p>The best application to find the best torrents</p>
                     </div>
                 </div>
                 <div className="carousel-item" data-bs-interval="2000">
                     <img src="https://cdn.mos.cms.futurecdn.net/KKeszNADDpSVbVvxFRFxWY.jpg" className="d-block w-100" alt="..." />
                     <div className="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
+                        <h5>LATEST RELEASES</h5>
+                        <p>The best application to find the best torrents</p>
                     </div>
                 </div>
             </div>
