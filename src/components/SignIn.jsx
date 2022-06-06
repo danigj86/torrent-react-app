@@ -96,7 +96,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-           {/*  <FormControlLabel
+            {/*  <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             /> */}
@@ -119,9 +119,15 @@ export default function SignIn() {
                   {"Don't have an account? Sign Up"}
                 </Linkk>
               </Grid>
+
             </Grid>
           </Box>
         </Box>
+        <div className="google-button">
+          <button className="login-with-google-btn" >
+            Sign in with Google
+          </button>
+        </div>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
