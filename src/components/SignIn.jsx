@@ -48,7 +48,7 @@ const theme = createTheme({
 export default function SignIn() {
 
   const handleSubmit = (event) => {
-    
+
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -96,10 +96,10 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
+           {/*  <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
