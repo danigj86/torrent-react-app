@@ -14,7 +14,10 @@ import navbar from '../styles/navbar.css';
 import SignUp from './SignUp';
 
 
+
 export const Navbar = () => {
+
+    const [ locationn, setLocationn ] = React.useState('/action');
     return (
         <Router>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -44,10 +47,10 @@ export const Navbar = () => {
                                 <Link className="nav-link " aria-current="page" to='/war'>WAR</Link>                            </li>
                         </ul>
                         <Link className="login-btn " aria-current="page" to='/login'>LOG IN </Link> <span>    </span>   
-                        <form className="d-flex" role="search">                       
+                       { locationn != '/action'  && <form className="d-flex" role="search">                       
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn " type="submit">Search...</button>
-                        </form>
+                        </form>}
                     </div>
                 </div>
             </nav>
