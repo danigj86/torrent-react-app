@@ -6,7 +6,6 @@ export const UseState = (props) => {
     const [ user, setUser ] = useState(null);
     const [ isAuthenticated, setIsAuthenticated ] = useState(false);
     const [ isLoading, setIsLoading ] = useState(false);
-
     const [peliculasDeLaCategoria, setPeliculasDeLaCategoria] = useState([]);
 
     //hace llamada a la api para obtener las peliculas

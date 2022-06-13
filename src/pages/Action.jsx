@@ -16,9 +16,9 @@ export const Action = () => {
 
   /* const location = useLocation();
   console.log(location.pathname); */
-  useEffect(() => {
+  /* useEffect(() => {
     getPelisApi()
-  }, [])
+  }, []) */
   /*------- RAITING STAR ------- */
   /*  const [rating, setRating] = useState(0) // initial rating value
    // Catch Rating value
