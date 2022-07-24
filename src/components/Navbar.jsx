@@ -12,6 +12,7 @@ import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import navbar from '../styles/navbar.css';
 import SignUp from './SignUp';
+import { MovieScreen } from './MovieScreen';
 
 
 
@@ -66,7 +67,7 @@ export const Navbar = () => {
                 <Route path='/register' element={<Register />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/*' element={<Home />} />
-
+                <Route path="/movie/:movieId" element={<MovieScreen />} />
             </Routes>
 
         </Router>
