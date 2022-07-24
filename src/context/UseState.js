@@ -20,7 +20,7 @@ export const UseState = (props) => {
         const resp = await fetch(`https://advanced-movie-search.p.rapidapi.com/discover/movie?with_genres=${idCategory}&page=1`, options2)
         const data = await resp.json();
         const pelis = data.results;
-        console.log(pelis);
+        //console.log(pelis);
         const peliculas = pelis.map(peli => {
           return {
             id: peli.id,
