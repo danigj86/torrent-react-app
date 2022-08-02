@@ -1,48 +1,86 @@
 import React, { useContext, useMemo } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import UserContext from "../../src/context/UserContext";
 
 export const MovieScreen = () => {
 
-    const navigate = useNavigate();
 
-    const {  detallePeli } = useContext(UserContext);
 
-    //obtengo el id de la pelicula
-    const { movieId } = useParams();
+  const navigate = useNavigate();
 
-    //volver atrás
-    const handleReturn = () => {
-        navigate(-1);
-    }
+  const { detallePeli } = useContext(UserContext);
 
-  /*  const data =  getDetallePeli(movieId);
-   console.log(data); */
+  //obtengo el id de la pelicula
+  const { movieId, title, overview } = useParams();
 
-  
+  const location = useLocation();
+  console.log(location.state.poster);//"any type"
 
-   const getDetallePelii = async (idPeli) => {
+  /* const getTorrents = async (movieName) => {
     const options = {
       method: 'GET',
       headers: {
         'X-RapidAPI-Key': 'f4558328a2mshd470c9fa547a718p1d6294jsn5f5c0fd153b2',
-        'X-RapidAPI-Host': 'advanced-movie-search.p.rapidapi.com'
+        'X-RapidAPI-Host': 'easytorrents1.p.rapidapi.com'
       }
     };
-    
-    fetch(`https://advanced-movie-search.p.rapidapi.com/movies/getdetails?movie_id=${idPeli}`, options)
+
+  
+    const resp = await fetch(`https://easytorrents1.p.rapidapi.com/?type=movie&name=${movieName}&language=en&quality=1080p`, options)
+    const data = await resp.json();
+    const pelis = data.results;
+    console.log(pelis);
+  }
+  getTorrents(title); */
+
+  const getTorrent = async (movieName) => {
+
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'f4558328a2mshd470c9fa547a718p1d6294jsn5f5c0fd153b2',
+        'X-RapidAPI-Host': 'torrent-search2.p.rapidapi.com'
+      }
+    };
+
+    console.log(movieName);
+    await fetch(`https://torrent-search2.p.rapidapi.com/v1/all/search?query=${movieName}`, options)
       .then(response => response.json())
       .then(response => console.log(response))
       .catch(err => console.error(err));
   }
-    
-  const review = useMemo(() => { getDetallePelii(movieId) }, [movieId]);
-  console.log(review);
+  getTorrent(location.state.title);
+
+  //volver atrás
+  const handleReturn = () => {
+    navigate(-1);
+  }
+
 
   return <>
-    <div>Movie Details</div>
-    <p>{movieId}</p>    
-   
-    <button type="button" onClick={handleReturn} className="btn btn-dark">Back</button>
-    </>
+
+   {/*  <h3>Movie Details</h3>
+     */}
+
+    <div className="p-5 text-center bg-image rounded-3" style={{
+      backgroundImage: `url(${location.state.poster})`, backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      height: '400px',
+    }}>
+      <div className="mask" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+        <div className="d-flex justify-content-center align-items-center h-100">
+          <div className="text-white">
+            <h1 className="mb-3">{location.state.title}</h1>
+            <h4 className="mb-3">{location.state.overview}</h4>
+            <a className="btn btn-outline-light btn-lg mb-4" href="#!" role="button">Download Torrent</a>
+            <br />
+          </div>
+        </div>
+      </div>
+      <button type="button" onClick={handleReturn} className="btn btn-dark m-4">Back</button>
+    </div>
+    
+
+  </>
 }

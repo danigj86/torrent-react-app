@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Action } from '../pages/Action';
 import { Adventure } from '../pages/Adventure';
@@ -67,7 +67,7 @@ export const Navbar = () => {
                 <Route path='/register' element={<Register />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/*' element={<Home />} />
-                <Route path="/movie/:movieId" element={<MovieScreen />} />
+                <Route path="/movie/:movieId:title:overview" element={<MovieScreen />} />
             </Routes>
 
         </Router>
