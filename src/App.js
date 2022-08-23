@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import { Navbar } from './components/Navbar';
 import { Carrousel } from './components/Carrousel';
+import { Footer } from './components/Footer';
 import './App.css';
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
     <>
       <Navbar />
       <div className="App">
-        <h2>AQUI EL FOOTER abajo</h2>
+        <Footer/>
       </div>
 
     </>

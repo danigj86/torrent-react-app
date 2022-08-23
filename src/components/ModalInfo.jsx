@@ -23,8 +23,8 @@ export const ModalInfo = ({ id, title, overview, date, vote, poster }) => {
 
         return (
             <>
-                <button type="button" className="btn btn-dark" data-bs-toggle="modal" data-bs-target={"#number" + id}>
-                    Info Modal
+                <button type="button" className="btn btn-dark ml-3" data-bs-toggle="modal" data-bs-target={"#number" + id}>
+                   Modal Info + Trailer
                 </button>
 
                 <div className="modal fade" id={"number" + id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,7 +41,6 @@ export const ModalInfo = ({ id, title, overview, date, vote, poster }) => {
                                     <label className="form-label">Year: {date}</label>
                                     <p className="form-label">Score: {vote}/10</p>
                                     <p>Trailer:  <a href={urlTrailer} target="_blank" rel="noopener noreferrer">Click to see the trailer</a> </p>
-                                    <p>Download Torrent (Bit Torrent)</p>
                                 </div>
 
                             </div>

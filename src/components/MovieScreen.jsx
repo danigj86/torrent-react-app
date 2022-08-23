@@ -59,20 +59,20 @@ export const MovieScreen = () => {
 
   return <>
 
-   {/*  <h3>Movie Details</h3>
+    {/*  <h3>Movie Details</h3>
      */}
 
-    <div className="p-5 text-center bg-image rounded-3" style={{
+    <div className="p-5 text-center bg-image " style={{
       backgroundImage: `url(${location.state.poster})`, backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
-      height: '400px',
-    }}>
+      minheight: '500px'}}>
       <div className="mask" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white">
             <h1 className="mb-3">{location.state.title}</h1>
             <h4 className="mb-3">{location.state.overview}</h4>
+            <h5>Click to download torrent:</h5>
             <a className="btn btn-outline-light btn-lg mb-4" href="#!" role="button">Download Torrent</a>
             <br />
           </div>
@@ -80,7 +80,5 @@ export const MovieScreen = () => {
       </div>
       <button type="button" onClick={handleReturn} className="btn btn-dark m-4">Back</button>
     </div>
-    
-
-  </>
+ </>
 }
