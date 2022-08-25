@@ -8,11 +8,11 @@ export const MovieScreen = () => {
 
   const navigate = useNavigate();
 
-  const { detallePeli } = useContext(UserContext);
-
+/*   const { detallePeli } = useContext(UserContext);
+ */
   //obtengo el id de la pelicula
-  const { movieId, title, overview } = useParams();
-
+/*   const { movieId, title, overview } = useParams(); */
+  //DEVUELVE LOS DATOS QUE HEMOS PASADO POR PARAMETROS Y URL
   const location = useLocation();
   console.log(location.state.poster);//"any type"
 
@@ -49,6 +49,7 @@ export const MovieScreen = () => {
       .then(response => console.log(response))
       .catch(err => console.error(err));
   }
+  
   getTorrent(location.state.title);
 
   //volver atrás
