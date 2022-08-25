@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { BrowserRouter as Router, Routes, Route, Link as Linkk } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import UserContext from "../../src/context/UserContext";
+
 
 function Copyright(props) {
   return (
@@ -56,6 +58,8 @@ export default function SignIn() {
       password: data.get('password'),
     });
   };
+
+  const { signInWithGoogle } = useContext(UserContext);
 
   return (
     <ThemeProvider theme={theme}>
@@ -124,7 +128,7 @@ export default function SignIn() {
           </Box>
         </Box>
         <div className="google-button">
-          <button className="login-with-google-btn" >
+          <button className="login-with-google-btn"  onClick={() => signInWithGoogle()}>
             Sign in with Google
           </button>
         </div>

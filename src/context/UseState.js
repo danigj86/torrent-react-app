@@ -1,16 +1,19 @@
 import React, { useRef, useState } from 'react';
 import UserContext from "./UserContext";
 import axios from 'axios';
+import { signInWithPopup } from 'firebase/auth'
+import { auth, provider } from '../firebase-config'
+import { useNavigate } from 'react-router-dom'
 
 export const UseState = (props) => {
 
   const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [peliculasDeLaCategoria, setPeliculasDeLaCategoria] = useState([]);
   const [detallePeli, setDetallePeli] = useState();
 
-  //hace llamada a la api para obtener las peliculas
+  //HACE LLAMADA A LA API PARA OBTENER PELICULAS
   const getPelisApi = async (idCategory) => {
     const options2 = {
       method: 'GET',
@@ -62,10 +65,30 @@ export const UseState = (props) => {
 
   } */
 
+  //LOGIN CON GOOGLE
+  const signInWithGoogle = () => {
+
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            //console.log(result.user.auth.currentUser.displayName);
+            console.log(result);
+            console.log(result.user.auth.currentUser.uid);
+            console.log(auth.currentUser.displayName)
+            localStorage.setItem('isAuth', true);
+            localStorage.setItem('idUserPost', auth.currentUser.uid);
+            localStorage.setItem('currentUser', result.user.auth.currentUser.displayName);
+            setIsAuth(true);
+            window.location = '/';
+            //return this.props.history.push('/');
+           /*  navigate('/', {
+                replace: true
+            }); */
+        });
+}
 
   return (
     <UserContext.Provider
-      value={{ getPelisApi, peliculasDeLaCategoria, detallePeli }}>{props.children}
+      value={{ getPelisApi, signInWithGoogle, peliculasDeLaCategoria, detallePeli }}>{props.children}
     </UserContext.Provider>
   );
 };
