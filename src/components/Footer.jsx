@@ -29,7 +29,7 @@ export const Footer = () => {
                             <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
                         </div>
                     </div>
-                    <p class="copyright"> <a href="http://web.daniguerrero.es/">DanielDev © 2022</a> </p>
+                    <p class="copyright"> <a href="http://daniguerrero.es/">DanielDev © 2022</a> </p>
                 </div>
             </footer>
         </div>

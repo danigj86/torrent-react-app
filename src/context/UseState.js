@@ -3,12 +3,11 @@ import UserContext from "./UserContext";
 import axios from 'axios';
 import { signInWithPopup } from 'firebase/auth'
 import { auth, provider } from '../firebase-config'
-import { useNavigate } from 'react-router-dom'
 
 export const UseState = (props) => {
 
   const [user, setUser] = useState(null);
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
   const [isLoading, setIsLoading] = useState(false);
   const [peliculasDeLaCategoria, setPeliculasDeLaCategoria] = useState([]);
   const [detallePeli, setDetallePeli] = useState();
@@ -88,7 +87,7 @@ export const UseState = (props) => {
 
   return (
     <UserContext.Provider
-      value={{ getPelisApi, signInWithGoogle, peliculasDeLaCategoria, detallePeli }}>{props.children}
+      value={{ getPelisApi, signInWithGoogle, isAuth, setIsAuth, peliculasDeLaCategoria, detallePeli }}>{props.children}
     </UserContext.Provider>
   );
 };

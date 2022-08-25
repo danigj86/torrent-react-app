@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import { Home } from '../pages/Home';
 import { Action } from '../pages/Action';
 import { Adventure } from '../pages/Adventure';
@@ -10,15 +11,21 @@ import { Thriller } from '../pages/Thriller';
 import { War } from '../pages/War';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
+import { MovieScreen } from './MovieScreen';
+import { MyTorrentsList } from '../pages/MyTorrentsList';
+
+import UserContext from "../../src/context/UserContext";
 import navbar from '../styles/navbar.css';
 import SignUp from './SignUp';
-import { MovieScreen } from './MovieScreen';
 
 
 
 export const Navbar = () => {
 
-    const [ locationn, setLocationn ] = React.useState('/action');
+    const { isAuth, setIsAuth } = useContext(UserContext);
+    console.log(isAuth)
+
+    const [locationn, setLocationn] = React.useState('/action');
     return (
         <Router>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,16 +46,19 @@ export const Navbar = () => {
                                 <Link className="nav-link " aria-current="page" to='/animation'>ANIMATION</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to='/horror'>HORROR</Link>                            </li>
+                                <Link className="nav-link " aria-current="page" to='/horror'>HORROR</Link></li>
                             <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to='/thriller'>THRILLER</Link>                            </li>
+                                <Link className="nav-link " aria-current="page" to='/thriller'>THRILLER</Link></li>
                             <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to='/comedy'>COMEDY</Link>                            </li>
+                                <Link className="nav-link " aria-current="page" to='/comedy'>COMEDY</Link></li>
                             <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to='/war'>WAR</Link>                            </li>
+                                <Link className="nav-link " aria-current="page" to='/war'>WAR</Link></li>
                         </ul>
-                        <Link className="login-btn " aria-current="page" to='/login'>LOG IN </Link> <span>    </span>   
-                       { locationn != '/action'  && <form className="d-flex" role="search">                       
+                        
+
+                        {isAuth &&<Link className="login-btn " aria-current="page" to='/mytorrents'>My Torrents</Link> }
+                        <Link className="login-btn " aria-current="page" to='/login'>LOG IN </Link>
+                        {locationn != '/action' && <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn " type="submit">Search...</button>
                         </form>}
@@ -65,6 +75,7 @@ export const Navbar = () => {
                 <Route path='/war' element={<War />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/mytorrents' element={<MyTorrentsList />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/*' element={<Home />} />
                 <Route path="/movie/:movieId:title:overview" element={<MovieScreen />} />
