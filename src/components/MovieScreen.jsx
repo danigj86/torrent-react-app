@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import UserContext from "../../src/context/UserContext";
 
@@ -8,15 +8,19 @@ export const MovieScreen = () => {
 
   const navigate = useNavigate();
 
-/*   const { detallePeli } = useContext(UserContext);
- */
-  //obtengo el id de la pelicula
+  //obtengo el id de la pelicula con params
 /*   const { movieId, title, overview } = useParams(); */
+
   //DEVUELVE LOS DATOS QUE HEMOS PASADO POR PARAMETROS Y URL
   const location = useLocation();
   console.log(location.state.poster);//"any type"
 
-  /* const getTorrents = async (movieName) => {
+const [torrent, setTorrent] = useState();
+
+let torrentt = '';
+
+
+  const getTorrent = async (movieName) => {
     const options = {
       method: 'GET',
       headers: {
@@ -24,16 +28,21 @@ export const MovieScreen = () => {
         'X-RapidAPI-Host': 'easytorrents1.p.rapidapi.com'
       }
     };
-
+    fetch('https://easytorrents1.p.rapidapi.com/?type=movie&name=Dragon%20Ball%20Super%3A%20Super%20Hero&language=en&quality=1080p', options)
+    .then(response => response.json())
+    .then(response => /* console.log(response.magnet_link) */ setTorrent(response.magnet_link))
+    .catch(err => console.error(err))
+    .finally(console.log(torrent));
+    //console.log(torrent);
   
-    const resp = await fetch(`https://easytorrents1.p.rapidapi.com/?type=movie&name=${movieName}&language=en&quality=1080p`, options)
+   /*  const resp = await fetch('https://easytorrents1.p.rapidapi.com/?type=movie&name=Dragon%20Ball%20Super%3A%20Super%20Hero&language=en&quality=1080p', options)
     const data = await resp.json();
     const pelis = data.results;
-    console.log(pelis);
-  }
-  getTorrents(title); */
+    console.log(pelis); */
+  };
 
-  const getTorrent = async (movieName) => {
+  getTorrent(location.state.title); 
+ /*  const getTorrent = async (movieName) => {
 
     const options = {
       method: 'GET',
@@ -50,7 +59,7 @@ export const MovieScreen = () => {
       .catch(err => console.error(err));
   }
   
-  getTorrent(location.state.title);
+  getTorrent(location.state.title); */
 
   //volver atrás
   const handleReturn = () => {
@@ -74,7 +83,7 @@ export const MovieScreen = () => {
             <h1 className="mb-3">{location.state.title}</h1>
             <h4 className="mb-3">{location.state.overview}</h4>
             <h5>Click to download torrent:</h5>
-            <a className="btn btn-outline-light btn-lg mb-4" href="#!" role="button">Download Torrent</a>
+            <a className="btn btn-outline-light btn-lg mb-4" href={torrent} target="_blank" role="button">Download Torrent</a>
             <br />
           </div>
         </div>
