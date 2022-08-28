@@ -28,7 +28,7 @@ let torrentt = '';
         'X-RapidAPI-Host': 'easytorrents1.p.rapidapi.com'
       }
     };
-    fetch('https://easytorrents1.p.rapidapi.com/?type=movie&name=Dragon%20Ball%20Super%3A%20Super%20Hero&language=en&quality=1080p', options)
+    fetch(`https://easytorrents1.p.rapidapi.com/?type=movie&name=${movieName}&language=en&quality=1080p`, options)
     .then(response => response.json())
     .then(response => /* console.log(response.magnet_link) */ setTorrent(response.magnet_link))
     .catch(err => console.error(err))
