@@ -8,23 +8,30 @@ import { MovieCard } from '../components/MovieCard';
 
 export const Animation = () => {
 
-  const { getPelisApi, peliculasDeLaCategoria } = useContext(UserContext);
+  const { getPelisApi, peliculasDeLaCategoria, isLoading } = useContext(UserContext);
   //le meto la categoria de la categoria
   const idCategory = "12";
-  getPelisApi(idCategory);
+  useEffect(() => {
 
-  
+    getPelisApi(idCategory);
+  }, []);
+
+
   return (
     <>
-    <div>Animation</div>
-    <div className='d-flex flex-wrap justify-content-center'>
-        
-          {
-            peliculasDeLaCategoria.map(dato => {
-              return <MovieCard key={dato.id} {...dato} />
-            })
-          }
-        
+      <div>Animation</div>
+      <div className='d-flex flex-wrap justify-content-center'>
+
+        {
+
+          isLoading == true ? <div className="d-flex justify-content-center">
+            <div role="status">
+              <span className="spinner-grow"></span><span className="spinner-grow"></span><span className="spinner-grow"></span>
+            </div>
+          </div> : peliculasDeLaCategoria.map(dato => {
+            return <MovieCard key={dato.id} {...dato} />
+          })
+        }
       </div>
     </>
   )

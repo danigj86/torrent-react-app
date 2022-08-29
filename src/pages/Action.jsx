@@ -10,10 +10,14 @@ import { MovieCard } from '../components/MovieCard';
 export const Action = () => {
 
   //llamo a la funcion "getPelis" y "peliculasDeLaCategoria" del context
-  const { getPelisApi, peliculasDeLaCategoria } = useContext(UserContext);
-  //le meto la categoria de la categoria
+  const { getPelisApi, peliculasDeLaCategoria, isLoading } = useContext(UserContext);
+    //le meto la categoria de la categoria
   const idCategory = "28";
-  getPelisApi(idCategory);
+  useEffect(() => {
+
+    getPelisApi(idCategory);
+}, []);
+  
 
   /* const location = useLocation();
   console.log(location.pathname); */
@@ -53,8 +57,13 @@ export const Action = () => {
 
       <div>Action</div>
       <div className='d-flex flex-wrap justify-content-center'>
-        {
-          peliculasDeLaCategoria.map(dato => {
+       {
+
+          isLoading == true ? <div className="d-flex justify-content-center">
+            <div role="status">
+              <span className="spinner-grow"></span><span className="spinner-grow"></span><span className="spinner-grow"></span>
+            </div>
+          </div> : peliculasDeLaCategoria.map(dato => {
             return <MovieCard key={dato.id} {...dato} />
           })
         }
