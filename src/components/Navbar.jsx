@@ -8,11 +8,13 @@ import { Animation } from '../pages/Animation';
 import { Comedy } from '../pages/Comedy';
 import { Horror } from '../pages/Horror';
 import { Thriller } from '../pages/Thriller';
+import { signOut } from "firebase/auth";
 import { War } from '../pages/War';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import { MovieScreen } from './MovieScreen';
 import { MyTorrentsList } from '../pages/MyTorrentsList';
+import { auth, provider } from '../firebase-config'
 
 import UserContext from "../../src/context/UserContext";
 import navbar from '../styles/navbar.css';
@@ -26,6 +28,19 @@ export const Navbar = () => {
     console.log(isAuth)
 
     const [locationn, setLocationn] = React.useState('/action');
+
+    const logOut = () => {
+        signOut(auth)
+            .then(() => {
+                //localStorage.clear();
+                localStorage.removeItem('currentUser');
+                localStorage.removeItem('isAuth');
+                localStorage.removeItem('idUserPost');
+                setIsAuth(false);
+                window.location.pathname = "/login";
+            })
+    }
+
     return (
         <Router>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -54,10 +69,11 @@ export const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link " aria-current="page" to='/war'>WAR</Link></li>
                         </ul>
-                        
 
-                        {isAuth &&<Link className="login-btn " aria-current="page" to='/mytorrents'>My Torrents</Link> }
-                        <Link className="login-btn " aria-current="page" to='/login'>LOG IN </Link>
+
+                        {isAuth && <Link className="login-btn " aria-current="page" to='/mytorrents'>My Torrents</Link>}
+                        {!isAuth ? <Link className="login-btn " aria-current="page" to='/login'>LOG IN</Link> : <button className="login-btn " aria-current="page" onClick={logOut}>LOG OUT</button>}
+
                         {locationn != '/action' && <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn " type="submit">Search...</button>

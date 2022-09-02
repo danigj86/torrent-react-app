@@ -19,6 +19,7 @@ export const MovieScreen = () => {
   const [torrent, setTorrent] = useState();
 
   const getTorrent = async (movieName) => {
+    setIsLoading(true);
     const options = {
       method: 'GET',
       headers: {
@@ -26,14 +27,15 @@ export const MovieScreen = () => {
         'X-RapidAPI-Host': 'easytorrents1.p.rapidapi.com'
       }
     };
-    setIsLoading(true);
+    
     fetch(`https://easytorrents1.p.rapidapi.com/?type=movie&name=${movieName}&language=en&quality=1080p`, options)
       .then(response => response.json())
-      .then(response => /* console.log(response.magnet_link) */ setTorrent(response.magnet_link))
+      .then(response => setTorrent(response.magnet_link))
       .catch(err => console.error(err))
-      .finally( setIsLoading(false));
+      .finally(console.log(torrent));
+      setIsLoading(false);
     //console.log(torrent);
-   
+    
   };
 
 
