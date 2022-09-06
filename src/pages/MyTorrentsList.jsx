@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import UserContext from "../../src/context/UserContext";
+
 
 export const MyTorrentsList = () => {
+
+    const { isAuth } = useContext(UserContext);
+
+    !isAuth && (window.location = '/login');
+    
     return <>
 
         {/*  <h3>Movie Details</h3>
