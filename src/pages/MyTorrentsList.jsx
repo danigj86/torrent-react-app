@@ -1,13 +1,32 @@
 import React, { useContext } from 'react'
 import UserContext from "../../src/context/UserContext";
+import { Link, useNavigate } from 'react-router-dom';
+
 
 
 export const MyTorrentsList = () => {
 
+    const navigate = useNavigate();
+
     const { isAuth } = useContext(UserContext);
 
-    !isAuth && (window.location = '/login');
-    
+
+   /*  if(isAuth){
+        alert('hola')
+    }else{
+        window.location.pathname = "/";
+    } */
+
+  /*   if(isAuth){
+        alert('hola')
+    }else{
+        navigate(`${process.env.PUBLIC_URL}/`);
+    }
+
+ */
+   /*  !isAuth && navigate(`/movie)`; */
+/*     !isAuth && (window.location = `${process.env.PUBLIC_URL}/`);
+ */    
     return <>
 
         {/*  <h3>Movie Details</h3>

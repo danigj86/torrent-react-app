@@ -11,13 +11,13 @@ export const Action = () => {
 
   //llamo a la funcion "getPelis" y "peliculasDeLaCategoria" del context
   const { getPelisApi, peliculasDeLaCategoria, isLoading } = useContext(UserContext);
-    //le meto la categoria de la categoria
+  //le meto la categoria de la categoria
   const idCategory = "28";
   useEffect(() => {
 
     getPelisApi(idCategory);
-}, []);
-  
+  }, []);
+
 
   /* const location = useLocation();
   console.log(location.pathname); */
@@ -35,7 +35,7 @@ export const Action = () => {
 
   return (
     <>
-     {/* SIN NECESIDAD DE USAR MOVIECARD, EN CADA PAGINA SE PODRIA USAR 
+      {/* SIN NECESIDAD DE USAR MOVIECARD, EN CADA PAGINA SE PODRIA USAR 
      <div>Action</div>
       <div className='d-flex flex-wrap justify-content-center'>
         {
@@ -55,9 +55,28 @@ export const Action = () => {
 
 
 
-      <div>Action</div>
+    
+      <div className="p-5 text-center bg-image " style={{
+        backgroundImage: `url(https://www.latercera.com/resizer/n83tHvXcmn1O_aG7YCmKE_krWLU=/arc-anglerfish-arc2-prod-copesa/public/RFIZQUAZPNH4VNHQYUUY3UCLYQ.jpg)`, backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        minheight: '2000px'
+      }}>
+        <div className="mask" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <div className="text-white">
+              <h1 className="mb-3">A C T I O N </h1>
+              <h4 className="mb-3">Action Movies</h4>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br /><br />
       <div className='d-flex flex-wrap justify-content-center'>
-       {
+
+        {
 
           isLoading == true ? <div className="d-flex justify-content-center">
             <div role="status">

@@ -37,7 +37,7 @@ export const Navbar = () => {
                 localStorage.removeItem('isAuth');
                 localStorage.removeItem('idUserPost');
                 setIsAuth(false);
-                window.location.pathname = "/login";
+                window.location.pathname = "/";
             })
     }
 

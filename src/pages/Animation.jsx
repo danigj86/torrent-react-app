@@ -19,7 +19,24 @@ export const Animation = () => {
 
   return (
     <>
-      <div>Animation</div>
+      <div className="p-5 text-center bg-image " style={{
+        backgroundImage: `url(https://www.shenronzclothing.com/wp-content/uploads/2022/05/dragon-ball-super-super-hero-fondo-anime-canon-fecha-de-estreno-wiki.jpg)`, backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        minheight: '2000px'
+      }}>
+        <div className="mask" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <div className="text-white">
+              <h1 className="mb-3">A N I M A T I O N</h1>
+              <h4 className="mb-3">Animation Movies</h4>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br /><br />
       <div className='d-flex flex-wrap justify-content-center'>
 
         {
