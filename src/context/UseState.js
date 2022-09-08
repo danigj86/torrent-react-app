@@ -6,7 +6,7 @@ import { auth, provider } from '../firebase-config'
 
 export const UseState = (props) => {
 
-  const [user, setUser] = useState(null);
+  /* const [user, setUser] = useState(null); */
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
   const [isLoading, setIsLoading] = useState(false);
   const [peliculasDeLaCategoria, setPeliculasDeLaCategoria] = useState([]);

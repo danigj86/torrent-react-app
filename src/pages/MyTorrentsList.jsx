@@ -11,11 +11,11 @@ export const MyTorrentsList = () => {
     const { isAuth } = useContext(UserContext);
 
 
-   /*  if(isAuth){
-        alert('hola')
+    if(isAuth){
+        console.log('logueado')
     }else{
         window.location.pathname = "/";
-    } */
+    }
 
   /*   if(isAuth){
         alert('hola')

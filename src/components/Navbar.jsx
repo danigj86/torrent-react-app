@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import { Home } from '../pages/Home';
@@ -8,7 +8,7 @@ import { Animation } from '../pages/Animation';
 import { Comedy } from '../pages/Comedy';
 import { Horror } from '../pages/Horror';
 import { Thriller } from '../pages/Thriller';
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { War } from '../pages/War';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
@@ -24,6 +24,11 @@ import SignUp from './SignUp';
 
 export const Navbar = () => {
 
+    const [user, setUser] = useState(null);
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser)
+      })
+
     const { isAuth, setIsAuth } = useContext(UserContext);
     console.log(isAuth)
 
@@ -37,7 +42,7 @@ export const Navbar = () => {
                 localStorage.removeItem('isAuth');
                 localStorage.removeItem('idUserPost');
                 setIsAuth(false);
-                window.location.pathname = "/";
+                window.location = '/';
             })
     }
 
