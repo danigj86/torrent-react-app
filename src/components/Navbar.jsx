@@ -13,9 +13,10 @@ import { War } from '../pages/War';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import { MovieScreen } from './MovieScreen';
+import { SearchTorrents } from '../pages/SearchTorrents';
 import { MyTorrentsList } from '../pages/MyTorrentsList';
-import { auth, provider } from '../firebase-config'
 
+import { auth, provider } from '../firebase-config'
 import UserContext from "../../src/context/UserContext";
 import navbar from '../styles/navbar.css';
 import SignUp from './SignUp';
@@ -77,6 +78,7 @@ export const Navbar = () => {
 
 
                         {isAuth && <Link className="login-btn " aria-current="page" to='/mytorrents'>My Torrents</Link>}
+                        {isAuth && <Link className="login-btn " aria-current="page" to='/searchtorrents'>Search</Link>}
                         {!isAuth ? <Link className="login-btn " aria-current="page" to='/login'>LOG IN</Link> : <button className="login-btn " aria-current="page" onClick={logOut}>LOG OUT</button>}
 
                         {locationn != '/action' && <form className="d-flex" role="search">
@@ -97,6 +99,7 @@ export const Navbar = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/mytorrents' element={<MyTorrentsList />} />
+                <Route path='/searchtorrents' element={<SearchTorrents />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/*' element={<Home />} />
                 <Route path="/movie/:movieId:title:overview" element={<MovieScreen />} />
