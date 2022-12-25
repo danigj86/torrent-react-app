@@ -48,17 +48,26 @@ export const SearchTorrents = () => {
                 vote: peli.vote_average
             }
         })
-        setPelisTitle(peliculas);
+        //SI NO ENCUENTRA PELICULAS, ALERTA
+        if (peliculas.length == 0) {
+            alert('NO PELIS FOUND WITH THAT TITLE')
+            return false
+        } else {
+            setPelisTitle(peliculas);
+        }
         console.log(peliculas);
     }
-    
+
     //llama a getPeliTitle y muestra las pelis
     const handleSubmit = (e) => {
         e.preventDefault();
         //console.log('You clicked submit.');
         console.log('you clicked submit and search: ' + titleName);
+        // console.log('lengh: '+ pelisTitle.length)
         getPeliTitle(titleName);
+
     }
+
 
 
     return <>
@@ -83,12 +92,10 @@ export const SearchTorrents = () => {
                             <input type="email" className="form-control" style={{ maxWidth: 250 }} placeholder="Search movie"
                                 onChange={(e) => (setTitleName(e.target.value))} />
                             <br />
-                        
+
                             <form onSubmit={handleSubmit}>
                                 <button className="btn btn-dark" type="submit">Search</button>
                             </form>
-
-
                         </div>
                         <br />
                     </div>
@@ -96,18 +103,18 @@ export const SearchTorrents = () => {
             </div>
         </div>
         <br /><br />
-      <div className='d-flex flex-wrap justify-content-center'>
+        <div className='d-flex flex-wrap justify-content-center'>
 
-        {
+            {
 
-          isLoading == true ? <div className="d-flex justify-content-center">
-            <div role="status">
-              <span className="spinner-grow"></span><span className="spinner-grow"></span><span className="spinner-grow"></span>
-            </div>
-          </div> : pelisTitle.map(dato => {
-            return <MovieCard key={dato.id} {...dato} />
-          })
-        }
-      </div>
+                isLoading == true ? <div className="d-flex justify-content-center">
+                    <div role="status">
+                        <span className="spinner-grow"></span><span className="spinner-grow"></span><span className="spinner-grow"></span>
+                    </div>
+                </div> : pelisTitle.map(dato => {
+                    return <MovieCard key={dato.id} {...dato} />
+                })
+            }
+        </div>
     </>
 }
