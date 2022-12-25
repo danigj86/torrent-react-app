@@ -17,7 +17,7 @@ export const Carrousel = () => {
                     </div>
                 </div>
                 <div className="carousel-item" data-bs-interval="2000">
-                    <img src="https://i0.wp.com/hipertextual.com/wp-content/uploads/2020/05/hipertextual-star-wars-celebra-may-the-4th-be-with-you-con-extraordinario-video-que-rinde-homenaje-toda-saga-2020581511.jpg?fit=1200%2C675&quality=50&strip=all&ssl=1" className="d-block w-100" alt="..." />
+                    <img src="https://www.nerdpool.it/wp-content/uploads/2022/12/maxresdefault-3.webp" className="d-block w-100" alt="..." />
                     <div className="carousel-caption d-none d-md-block">
                         <h5>VARIOUS GENRES</h5>
                         <p>The best application to find the best torrents</p>

@@ -1,18 +1,66 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import UserContext from "../../src/context/UserContext";
 import { Link, useNavigate } from 'react-router-dom';
+
+import { MovieCard } from '../components/MovieCard';
+
 
 export const SearchTorrents = () => {
     const navigate = useNavigate();
 
     const { isAuth } = useContext(UserContext);
 
-
+    //SI NO ESTAS LOGUEADO, REDIRIJE A "HOME"
     if (isAuth) {
         console.log('logueado')
     } else {
         window.location.pathname = "/";
     }
+
+    const { isLoading } = useContext(UserContext);
+
+    const [pelisTitle, setPelisTitle] = useState([]);
+    const [titleName, setTitleName] = useState();
+    console.log(titleName)
+
+    const getPeliTitle = async (title) => {
+
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'f4558328a2mshd470c9fa547a718p1d6294jsn5f5c0fd153b2',
+                'X-RapidAPI-Host': 'advanced-movie-search.p.rapidapi.com'
+            }
+        };
+
+        const resp = await fetch(`https://advanced-movie-search.p.rapidapi.com/search/movie?query=${title}&page=1`, options)
+        const data = await resp.json();
+        const pelisTitulo = data.results;
+        //console.log (pelisTitulo);
+
+        const peliculas = pelisTitulo.map(peli => {
+            return {
+                id: peli.id,
+                title: peli.title,
+                poster: peli.backdrop_path,
+                overview: peli.overview,
+                release_date: peli.release_date,
+                vote: peli.vote_average
+            }
+        })
+        setPelisTitle(peliculas);
+        console.log(peliculas);
+    }
+    
+    //llama a getPeliTitle y muestra las pelis
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        //console.log('You clicked submit.');
+        console.log('you clicked submit and search: ' + titleName);
+        getPeliTitle(titleName);
+    }
+
+
     return <>
 
         <div className="p-5 text-center bg-image " style={{
@@ -32,7 +80,14 @@ export const SearchTorrents = () => {
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
-                            <input type="email" className="form-control" style={{ maxWidth: 250 }} placeholder="Search movie" />
+                            <input type="email" className="form-control" style={{ maxWidth: 250 }} placeholder="Search movie"
+                                onChange={(e) => (setTitleName(e.target.value))} />
+                            <br />
+                        
+                            <form onSubmit={handleSubmit}>
+                                <button className="btn btn-dark" type="submit">Search</button>
+                            </form>
+
 
                         </div>
                         <br />
@@ -40,5 +95,19 @@ export const SearchTorrents = () => {
                 </div>
             </div>
         </div>
+        <br /><br />
+      <div className='d-flex flex-wrap justify-content-center'>
+
+        {
+
+          isLoading == true ? <div className="d-flex justify-content-center">
+            <div role="status">
+              <span className="spinner-grow"></span><span className="spinner-grow"></span><span className="spinner-grow"></span>
+            </div>
+          </div> : pelisTitle.map(dato => {
+            return <MovieCard key={dato.id} {...dato} />
+          })
+        }
+      </div>
     </>
 }
