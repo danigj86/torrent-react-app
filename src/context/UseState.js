@@ -68,7 +68,7 @@ export const UseState = (props) => {
 
   return (
     <UserContext.Provider
-      value={{ getPelisApi, signInWithGoogle, isAuth, isLoading, setIsLoading, setIsAuth, peliculasDeLaCategoria, detallePeli }}>{props.children}
+      value={{ setIsAuth, getPelisApi, signInWithGoogle, isAuth, isLoading, setIsLoading, setIsAuth, peliculasDeLaCategoria, detallePeli }}>{props.children}
     </UserContext.Provider>
   );
 };
